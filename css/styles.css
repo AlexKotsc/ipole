@@ -19,7 +19,6 @@ body {
 
 	background-color: rgba(88,55,71,.8);*/
 	color:white;
-	min-height: 107px;
 	z-index: 10;
 }
 .footer {
@@ -95,6 +94,7 @@ body {
 	background-color: #B7938F;
 	height:100px;
 	line-height: 100px;
+	display:none;
 }
 .title h1 {
 	color: white;
@@ -106,6 +106,12 @@ body {
 	background-repeat: no-repeat;
 	height:20px;
 }
+
+
+.headerGutter {
+	height: 12px;
+	background-color: #B7938F;
+}
 /*
 @media (max-width: 767.98px) { 
 	.navbar, .navbar-toggler {
@@ -113,3 +119,4 @@ body {
 		margin-left: auto;
 	}
 	}*/
+
