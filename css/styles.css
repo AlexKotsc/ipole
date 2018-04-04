@@ -1,0 +1,115 @@
+/*
+Primær - Lys - Mørk
+#B7938F - #FFF0EF - #976D68
+#B7A38F - #DDCDBE - #6B5642
+#987687 - #B79DAA - #583747
+*/
+
+body {
+	background-color: #FFF0EF;
+
+
+	/*background-image: url('/ipole/img/ipolebg2.jpg');*/
+}
+
+.header {
+	background: linear-gradient(rgba(88,55,71,.8), rgba(88,55,71,.8)), url('/ipole/img/ipolebg2.jpg');
+	background-position: 10px -110px;
+	/*background-color: #583747;
+
+	background-color: rgba(88,55,71,.8);*/
+	color:white;
+	min-height: 107px;
+	z-index: 10;
+}
+.footer {
+	background-color: #DDCDBE;
+	color:white;
+}
+.middle {
+	background-color: #FFF0EF;
+	z-index: 5;
+	overflow:hidden;
+}
+.logo {
+	padding-left: 0;
+}
+
+.navbar-toggler-icon {
+	color: white;
+	background-image: url('/ipole/img/icons/menu.svg');
+}
+
+.oi-menu, .navbar-toggler {
+	color:white;
+}
+.navbar-toggler {
+	padding-left: 2px;
+}
+.header a {
+	color: rgba(255,255,255,.5);
+	text-transform:uppercase;
+}
+.header a:hover {
+	color:#FFFFFF;
+}
+.header .nav-item.active a {
+	font-weight: 500;
+	color:#FFFFFF;
+}
+.navbar {
+	width: 100%;
+}
+.no-padding {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+@media (max-width: 767.98px) { 
+	.socials {
+		text-align:left!important;
+	}
+	.icon-facebook, .icon-instagram {
+		display: inline;
+	}
+}
+.icon-facebook, .icon-instagram {
+	background-position: center;
+	background-repeat: no-repeat;
+	width:32px;
+	height:32px;
+	margin: 4px;
+	display:inline-block;
+	border-radius: 6px;
+}
+
+.icon-facebook {
+	background-image: url('/ipole/img/facebook-3-32.png');
+}
+.icon-instagram {
+	background-image: url('/ipole/img/instagram-32.png');
+}
+.icon-instagram:hover, .icon-facebook:hover {
+	box-shadow: 0 0 10px 2px rgba(88,55,71,1);
+}
+.title {
+	background-color: #B7938F;
+	height:100px;
+	line-height: 100px;
+}
+.title h1 {
+	color: white;
+	text-shadow: 0px 0px 10px black;
+}
+.titleArrow {
+	background-image: url('/ipole/img/arrow.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	height:20px;
+}
+/*
+@media (max-width: 767.98px) { 
+	.navbar, .navbar-toggler {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	}*/

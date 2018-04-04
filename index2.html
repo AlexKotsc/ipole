@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Map</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="utf-8">
+	<style>
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+      	//height: 100%;
+      	height: 600px;
+      	width: 1000px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      /*html, body {
+      	height: 100%;
+      	margin: 0;
+      	padding: 0;
+      	}*/
+      </style>
+    </head>
+    <body>
+     <div id="map"></div>
+     <script>
+
+
+      function getLocation() {
+       if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    }
+    function showPosition(position) {
+     console.log("Latitude: " + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude); 
+   }
+   
+
+   var map;
+   function initMap() {
+     var myLatLng = {lat: 56.2, lng: 10.83};
+
+     map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 7
+    });
+
+     google.maps.event.addListener(map, 'click', function(){
+      getLocation();
+
+
+      console.log(map);
+    });
+
+  			/*var marker = new google.maps.Marker({
+  				position: myLatLng,
+  				map: map,
+  				title: 'Hello World!'
+  			});
+
+  			var infowindow = new google.maps.InfoWindow({
+  				content: "test",
+  				maxWidth: 200
+  			});
+  			marker.addListener('click', function() {
+  				infowindow.open(map, marker);
+  			});*/
+
+  			addCenter('Aalborg', 'Jyllandsgade 30, 9000 Aalborg', 'Aalborg', null);
+  			addCenter('Hjørring', 'Søndergade 5, 9800 Hjørring', 'Hjørring', null)
+  			addCenter('Thisted', 'Munkevej 7A, 7700 Thisted', 'Thisted', null);
+  			addCenter('Århus', 'Frederiksgade 78 C, 2. sal. 8000 Aarhus', 'Århus', null);
+  			addCenter('Randers', 'Torvegade 14, 2. sal., 8900 Randers', 'Randers', null);
+  			//addCenter('Aars', '?', 'Aars', null);
+  			addCenter('Roskilde', 'Industrivej 44C, 4000 Roskilde', 'Roskilde', null);
+  			addCenter('Herning', 'Vestergade 22, 7400 Herning', 'Herning', null);
+  			addCenter('Horsens', 'Alrøvej 7, 8700 Horsens', 'Horsens', null);
+  			addCenter('Vejle', 'Sjællandsgade 23 a, 7100 Vejle', 'Vejle', null);
+  			addCenter('Kolding', 'Dalbygade 40 A, 1. sal, 6000 Kolding', 'Kolding', null);
+  			//addCenter('Varde', '?', 'Varde', null);
+  			addCenter('Haderslev', 'Nørregade 13, 2. sal, 6100 Haderslev', 'Haderslev', null);
+  			addCenter('Odense/Svendborg', 'B. Bangs gade 2, 5000 Odense C', 'Odense/Svendborg', null);
+  			addCenter('Sønderborg', 'Helgolandsgade 11, 6400 Sønderborg', 'Sønderborg', null);
+
+  		}
+
+  		function addCenter(name, address, city, position){
+
+  			var xhr = new XMLHttpRequest();
+  			xhr.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCQyvRhrCK7EKDig1nm0vgVoHIG8xvI568", true);
+  			xhr.onload = function (e) {
+  				if (xhr.readyState === 4) {
+  					if (xhr.status === 200) {
+  						console.log(xhr.responseText);
+
+  						var response = JSON.parse(xhr.responseText);
+
+  						console.log(response.results[0].geometry.location);
+
+  						var centerMarker = new google.maps.Marker({
+							//position: {lat: position.lat, lng: position.lng},
+							position: response.results[0].geometry.location,
+							map:map,
+							title: name
+						});
+
+  						var centerInfoWindow = new google.maps.InfoWindow({
+  							content: name + ' ' + address + ' ' + city,
+  							maxWidth: 350
+  						});
+
+  						centerMarker.addListener('click', function(){
+  							centerInfoWindow.open(map, centerMarker);
+  						});
+  					} else {
+  						console.error(xhr.statusText);
+  					}
+  				}
+  			};
+  			xhr.onerror = function (e) {
+  				console.error(xhr.statusText);
+  			};
+  			xhr.send(null);
+
+
+
+  		}
+
+  		function distance(lat1, lng1, lat2, lng2) {
+  			var radlat1 = Math.PI * lat1 / 180;
+  			var radlat2 = Math.PI * lat2 / 180;
+  			var radlon1 = Math.PI * lng1 / 180;
+  			var radlon2 = Math.PI * lng2 / 180;
+  			var theta = lng1 - lng2;
+  			var radtheta = Math.PI * theta / 180;
+  			var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  			dist = Math.acos(dist);
+  			dist = dist * 180 / Math.PI;
+  			dist = dist * 60 * 1.1515;
+
+        //Get in in kilometers
+        dist = dist * 1.609344;
+
+        return dist;
+      }
+		// https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCQyvRhrCK7EKDig1nm0vgVoHIG8xvI568
+		// https://maps.googleapis.com/maps/api/geocode/json?address=Jyllandsgade+30,+9000+Aalborg&key=AIzaSyCQyvRhrCK7EKDig1nm0vgVoHIG8xvI568
+		//Jyllandsgade 30, 9000 Aalborg
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQyvRhrCK7EKDig1nm0vgVoHIG8xvI568&callback=initMap"
+	async defer></script>
+</body>
+</html>

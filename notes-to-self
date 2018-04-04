@@ -1,0 +1,8 @@
+notes-to-self
+
+Foreslå center-vælger via Google Maps kort, med liste ved siden, ala FitnessWorld + find mit nærmeste center ud fra browser lokation eller postnr.
+Gem seneste valgte center i cookie, så man kan gå direkte til booking når man valgt center én gang.
+
+Instagram-integration til hvert center ud fra et tag, ex. #iPolesonderborg
+Token: 4680525336.6e74cca.ac99d5c7e3144f139e262ae72c05028c
+Kræver an approval proces igennem Instagram: https://rudrastyh.com/javascript/get-photos-from-instagram.html
