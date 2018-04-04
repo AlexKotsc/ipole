@@ -6,7 +6,9 @@ Primær - Lys - Mørk
 */
 
 @import url('https://fonts.googleapis.com/css?family=Strait');
-
+html, body {
+	height: 100%;
+}
 body {
 	background-color: #FFF0EF;
 
